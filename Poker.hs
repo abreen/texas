@@ -8,7 +8,6 @@ module Poker
 where
 
 import Card
-import Maybe
 import Data.List (sort, subsequences)
 
 data Hand = NullHand | HighCard Card | Pair [Card] | TwoPair [Card] |
