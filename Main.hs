@@ -3,7 +3,6 @@
 import Poker
 import Card
 import Shuffle
-import List
 import Show
 
 main = do
