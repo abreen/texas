@@ -21,8 +21,6 @@ module Card
    shuffle)
 where
 
-import Maybe
-
 data Suit  = Spades | Hearts | Clubs | Diamonds     deriving Eq
 data Value = Two | Three | Four | Five | Six |
              Seven | Eight | Nine | Ten | Jack |
@@ -48,30 +46,29 @@ values = [Two .. Ace]
 
 
 -- Tries to interpret a human-readable shorthand for a card
-card :: String -> Maybe Card
-card str = let getValueFromString '2' = Just Two
-               getValueFromString '3' = Just Three
-               getValueFromString '4' = Just Four
-               getValueFromString '5' = Just Five
-               getValueFromString '6' = Just Six
-               getValueFromString '7' = Just Seven
-               getValueFromString '8' = Just Eight
-               getValueFromString '9' = Just Nine
-               getValueFromString 'T' = Just Ten
-               getValueFromString 'J' = Just Jack
-               getValueFromString 'Q' = Just Queen
-               getValueFromString 'K' = Just King
-               getValueFromString 'A' = Just Ace
-               getValueFromString _   = Nothing
-               getSuitFromString 'S' = Just Spades
-               getSuitFromString 'H' = Just Hearts
-               getSuitFromString 'C' = Just Clubs
-               getSuitFromString 'D' = Just Diamonds
-               getSuitFromString _   = Nothing
-               val  = getValueFromString (str !! 0)
-               suit = getSuitFromString (str !! 1)
-           in if (isNothing val) || (isNothing suit) then Nothing
-              else Just (Card (fromJust val) (fromJust suit))
+card :: String -> Card
+card str = let getValueFromChar '2' = Two
+               getValueFromChar '3' = Three
+               getValueFromChar '4' = Four
+               getValueFromChar '5' = Five
+               getValueFromChar '6' = Six
+               getValueFromChar '7' = Seven
+               getValueFromChar '8' = Eight
+               getValueFromChar '9' = Nine
+               getValueFromChar 'T' = Ten
+               getValueFromChar 'J' = Jack
+               getValueFromChar 'Q' = Queen
+               getValueFromChar 'K' = King
+               getValueFromChar 'A' = Ace
+               getValueFromChar v   = error ("Can't parse value " ++ (show v))
+               getSuitFromChar 'S' = Spades
+               getSuitFromChar 'H' = Hearts
+               getSuitFromChar 'C' = Clubs
+               getSuitFromChar 'D' = Diamonds
+               getSuitFromChar s   = error ("Can't parse suit " ++ (show s))
+               val  = getValueFromChar (str !! 0)
+               suit = getSuitFromChar (str !! 1)
+           in Card val suit
 
 
 -- The entire deck of 52 playing cards
