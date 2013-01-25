@@ -3,7 +3,7 @@ texas - A poker experiment in Haskell
 
 `texas` is a collection of Haskell scripts I have played around with in my free time. The package currently contains a couple of (mostly incomplete) modules related to playing cards and the game of poker.
 
-The `Card` module contains a representation of suits, values, and cards. It contains instantiations of `Ord` on values and cards (though this probably could be more elegant). The module also contains functions to help convert strings to `Card`s, binary comparison functions and comparison functions on lists, and functions for dividing and shuffling cards. There are also some useful values, namely: `suits`, the list of all suits in a standard deck; `values`, the list of all possible values (or ranks) of cards; and `deck`, the list of all 52 playing cards. Novelty values are also included (see `cowboys` and `oneEyed`).
+The `Card` module contains a representation of suits, values, and cards. It contains an instantiation of `Ord` on cards. The module also contains functions to help convert strings to `Card`s, binary comparison functions and comparison functions on lists, and functions for dividing and shuffling cards. There are also some useful values, namely: `suits`, the list of all suits in a standard deck; `values`, the list of all possible values (or ranks) of cards; and `deck`, the list of all 52 playing cards. Novelty values are also included (see `cowboys` and `oneEyed`).
 
 The `Shuffle` module contains the `wash` function, a shameless adaptation of the [function from the Haskell wiki][rnd].
 
